@@ -1,7 +1,9 @@
 {
   "scripts": {
     "start": "node server.js",
-    "dev": "env-cmd -f ./config/dev.env nodemon src/server.js -e js"
+    "dev": "env-cmd -f ./config/dev.env nodemon src/server.js -e js",
+    "data:import": "env-cmd -f ./config/dev.env node seeder.js",
+    "data:destroy": "env-cmd -f ./config/dev.env node ./seeder.js -d"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
