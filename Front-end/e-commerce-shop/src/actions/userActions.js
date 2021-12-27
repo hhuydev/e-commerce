@@ -27,7 +27,7 @@ import {
 } from "../constants/userConstant";
 import axios from "axios";
 import { CART_RESET } from "../constants/cartConstant";
-export const userActions = (email, password) => async (dispatch, getState) => {
+export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({
       type: USER_LOGIN_REQUEST,
