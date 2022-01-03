@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 import {
   CART_ADD_ITEM,
@@ -7,8 +6,11 @@ import {
   CART_RESET,
 } from "../constants/cartConstant";
 
-export const cartActions = (id, qty) => async (dispatch, getState) => {
-  const { data } = await axios.get(`/api/products/${id}`);
+const URL_API = "http://localhost:5000";
+
+export const addToCart = (id, qty) => async (dispatch, getState) => {
+  const { data } = await axios.get(`${URL_API}/api/products/${id}`);
+
   dispatch({
     type: CART_ADD_ITEM,
     payload: {

@@ -86,8 +86,8 @@ export const SubMenu = styled.ul`
   list-style: none;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.25rem;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: .25rem;
   transform: translateY(20%);
   transition: all 0.4s ease-in;
   :hover {
@@ -95,11 +95,11 @@ export const SubMenu = styled.ul`
     opacity: 1;
     transform: translateY(0%);
   }
-`;
+`
 export const NavItem = styled.li`
   height: 80px;
   border-bottom: 2px solid transparent;
-`;
+`
 export const NavLinks = styled(Link)`
   color: ${({ active }) => (active ? "#4b59f7" : "#000")};
   display: flex;
@@ -118,12 +118,12 @@ export const NavLinks = styled(Link)`
   @media screen and (max-width: 960px) {
     text-align: center;
   }
-`;
+`
 export const CartIcon = styled(ImCart)`
   margin-top: 7px;
   font-size: 25px;
   position: relative;
-`;
+`
 export const SubItem = styled.li`
   :hover {
     background-color: #4b59f7;
@@ -131,7 +131,7 @@ export const SubItem = styled.li`
       color: #fff;
     }
   }
-`;
+`
 export const CartCircle = styled.div`
   position: absolute;
   width: 15px;
@@ -142,7 +142,7 @@ export const CartCircle = styled.div`
   margin-left: 27px;
   color: #fff;
   font-size: 9px;
-`;
+`
 export const Button = styled.button`
   display: inline-block;
   border: 1px solid #384aeb;
@@ -153,17 +153,18 @@ export const Button = styled.button`
   padding: 10px 35px;
   text-decoration: none;
   transition: all 0.2s linear;
+
   &:hover {
     background-color: white;
     color: #384aeb;
   }
-`;
+`
 export const LogoutButton = styled.li`
   padding: 0.5rem 1rem;
   :hover {
     color: #fff;
   }
-`;
+`
 export const MobileButton = styled(Button)`
   :hover {
     color: #4b59f7;
@@ -173,7 +174,7 @@ export const MobileButton = styled(Button)`
     opacity: 1;
     transform: translateY(0%);
   }
-`;
+`
 export const MobileNavItem = styled(NavItem)`
   color: ${({ active }) => (active ? "#4b59f7" : "#000")};
   :hover {
@@ -184,4 +185,4 @@ export const MobileNavItem = styled(NavItem)`
     opacity: 1;
     transform: translateY(-50%);
   }
-`;
+`

@@ -4,7 +4,7 @@ const User = require("../model/User");
 
 const auth = asyncHandler(async (req, res, next) => {
   let token;
-
+  if (req.method === "OPTIONS") return next();
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
@@ -29,6 +29,7 @@ const auth = asyncHandler(async (req, res, next) => {
 });
 
 const sellerAndAdminAuth = (req, res, next) => {
+  if (req.method === "OPTIONS") return next();
   if (req.user && (req.user.isSeller || req.user.isAdmin)) {
     next();
   } else {
@@ -38,6 +39,7 @@ const sellerAndAdminAuth = (req, res, next) => {
 };
 
 const adminAuth = (req, res, next) => {
+  if (req.method === "OPTIONS") return next();
   if (req.user && req.user.isAdmin) {
     next();
   } else {

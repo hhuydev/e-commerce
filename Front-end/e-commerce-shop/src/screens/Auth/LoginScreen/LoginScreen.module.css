@@ -87,9 +87,9 @@
 
 @media screen and (max-width: 1000px) {
   .wrapper {
-    flex-direction: column;
+    flex-direction: column;  
   }
-
+  
   .leftSide {
     width: 100%;
   }

@@ -1,7 +1,7 @@
+import classes from "./CartModal.module.css";
 import { Button } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import classes from "./CartModal.module.css";
 function CartModal({ showModal, closeModal }) {
   const handleClose = () => {
     closeModal();

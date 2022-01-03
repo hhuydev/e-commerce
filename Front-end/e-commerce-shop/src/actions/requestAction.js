@@ -18,6 +18,8 @@ import {
 
 import axios from "axios";
 
+const URL_API = "http://localhost:5000";
+
 export const createRequest = (request) => async (dispatch, getState) => {
   try {
     dispatch({
@@ -36,7 +38,7 @@ export const createRequest = (request) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.post(
-      `/api/request/newSeller`,
+      `${URL_API}/api/requests/newSeller`,
       request,
       config
     );
@@ -73,7 +75,7 @@ export const getAllRequest = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/request/all`, config);
+    const { data } = await axios.get(`${URL_API}/api/requests/all`, config);
 
     dispatch({
       type: GET_REQUEST_SELLER_SUCCESS,
@@ -108,7 +110,7 @@ export const approveRequest = (requestId) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `/api/request/approve/${requestId}`,
+      `${URL_API}/api/requests/approve/${requestId}`,
       {},
       config
     );
@@ -145,7 +147,10 @@ export const getRequestById = (requestId) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/request/${requestId}`, config);
+    const { data } = await axios.get(
+      `${URL_API}/api/requests/${requestId}`,
+      config
+    );
 
     dispatch({
       type: GET_DESC_REQUEST_SELLER_SUCCESS,

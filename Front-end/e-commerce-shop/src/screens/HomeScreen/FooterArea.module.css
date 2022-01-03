@@ -65,13 +65,14 @@
 }
 
 @media screen and (max-width: 700px) {
-  .content {
+  .content{
     margin-top: 70px;
     display: grid;
-    grid-template-areas:
+    grid-template-areas: 
       "mission mission mission"
       "quickLinks contact contact"
-      "quickLinks contact contact";
+      "quickLinks contact contact"
+    ;
   }
   .mission {
     grid-area: mission;

@@ -15,33 +15,33 @@ import {
   Button,
   LogoutButton,
   MobileButton,
-  MobileNavItem,
-} from "./Navigation.element";
+  MobileNavItem
+} from "./Navigation.elements";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 import logo from "../../media/logo.svg";
 import { useDispatch, useSelector } from "react-redux";
-// import { logout } from "../../actions/userAction";
+import { logout } from '../../actions/userAction'
 
 const Navigation = () => {
-  let mobile = false;
+  let mobile = false
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const cart = useSelector((state) => state.cart);
-  const { cartItems } = cart;
+  const cart = useSelector((state) => state.cart)
+  const {cartItems} = cart
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  
+  const [click, setClick] = useState(false)
 
-  const [click, setClick] = useState(false);
-
-  const clickHandler = () => setClick(!click);
+  const clickHandler = () => setClick(!click)
 
   const logoutHandler = () => {
-    clickHandler();
-    // dispatch(logout());
-  };
+    clickHandler()
+    dispatch(logout())
+  }
 
   var url = window.location.href.split("/")[3];
 
@@ -62,10 +62,10 @@ const Navigation = () => {
     shoppingCart = null;
   }
 
-  if (window.screen.width < 1000) {
-    mobile = true;
+  if(window.screen.width < 1000) {
+    mobile = true
   } else {
-    mobile = false;
+    mobile = false
   }
 
   return (
@@ -85,13 +85,12 @@ const Navigation = () => {
               </NavLinks>
             </NavItem>
             <NavItem>
-              {mobile ? (
-                <MobileNavItem active={shop}>Shop</MobileNavItem>
-              ) : (
-                <NavLinks active={shop} to="/shop">
-                  Shop
-                </NavLinks>
-              )}
+              {mobile
+                ?
+                  <MobileNavItem active={shop}>Shop</MobileNavItem>
+                :
+                  <NavLinks active={shop} to="/shop">Shop</NavLinks>
+              }
               <SubMenu>
                 <SubItem>
                   <NavLinks active={shop} to="/shop" onClick={clickHandler}>
@@ -99,11 +98,7 @@ const Navigation = () => {
                   </NavLinks>
                 </SubItem>
                 <SubItem>
-                  <NavLinks
-                    active={shoppingCart}
-                    to="/cart"
-                    onClick={clickHandler}
-                  >
+                  <NavLinks active={shoppingCart} to="/cart" onClick={clickHandler}>
                     Shopping Cart
                   </NavLinks>
                 </SubItem>
@@ -116,51 +111,54 @@ const Navigation = () => {
               </NavLinks>
             </NavItem>
             <NavItem>
-              {userInfo != null ? (
-                <>
-                  {mobile ? (
-                    <MobileButton>{userInfo.name}</MobileButton>
-                  ) : (
-                    <NavLinks to={"/userProfile"}>
-                      <Button>{userInfo.name}</Button>
-                    </NavLinks>
-                  )}
-                  <SubMenu>
-                    <SubItem>
-                      <NavLinks to="/userProfile" onClick={clickHandler}>
-                        User Profile
+              {userInfo != null
+                ?
+                  <>
+                    {mobile
+                      ?
+                        <MobileButton>{userInfo.name}</MobileButton>
+                      :
+                        <NavLinks to={'/userProfile'}>
+                          <Button>{userInfo.name}</Button>
+                        </NavLinks>
+                    }       
+                    <SubMenu>
+                      <SubItem>
+                        <NavLinks to="/userProfile" onClick={clickHandler}>
+                          User Profile
+                        </NavLinks>
+                      </SubItem>
+                      <SubItem>
+                        <LogoutButton onClick={logoutHandler}>
+                          Logout
+                        </LogoutButton>
+                      </SubItem>
+                    </SubMenu>
+                  </>
+                :
+                  <>
+                  {mobile
+                    ?
+                      <MobileButton>Login</MobileButton>
+                    :
+                      <NavLinks to="/login">
+                        <Button>Login</Button>
                       </NavLinks>
-                    </SubItem>
-                    {/* <SubItem>
-                      <LogoutButton onClick={logoutHandler}>
-                        Logout
-                      </LogoutButton>
-                    </SubItem> */}
-                  </SubMenu>
-                </>
-              ) : (
-                <>
-                  {mobile ? (
-                    <MobileButton>Login</MobileButton>
-                  ) : (
-                    <NavLinks to="/login">
-                      <Button>Login</Button>
-                    </NavLinks>
-                  )}
-                  <SubMenu>
-                    <SubItem>
-                      <NavLinks to="/login" onClick={clickHandler}>
-                        Login
-                      </NavLinks>
-                    </SubItem>
-                    <SubItem>
-                      <NavLinks to="/register" onClick={clickHandler}>
-                        Register
-                      </NavLinks>
-                    </SubItem>
-                  </SubMenu>
-                </>
-              )}
+                  }
+                    <SubMenu>
+                      <SubItem>
+                        <NavLinks to="/login" onClick={clickHandler}>
+                          Login
+                        </NavLinks>
+                      </SubItem>
+                      <SubItem>
+                        <NavLinks to="/register" onClick={clickHandler}>
+                          Register
+                        </NavLinks>
+                      </SubItem>
+                    </SubMenu>
+                  </>
+              }
             </NavItem>
           </NavMenu>
         </NavbarContainer>

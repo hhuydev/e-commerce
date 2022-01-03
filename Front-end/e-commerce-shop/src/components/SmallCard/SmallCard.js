@@ -1,6 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import classes from "./SmallCard.module.css";
+import { Link } from "react-router-dom";
 const SmallCard = ({ product }) => {
   return (
     <div className={classes.container}>

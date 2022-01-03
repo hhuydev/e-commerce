@@ -1,19 +1,19 @@
 import Container from "../../components/Container";
+import classes from "./TrendingSection.module.css";
 import SmallCard from "../../components/SmallCard/SmallCard";
 import { useDispatch, useSelector } from "react-redux";
 import { trendingProducts } from "../../actions/productActions";
 import { useEffect } from "react";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
-import classes from "./TrendingSection.module.css";
 
 const TrendingSection = () => {
   const dispatch = useDispatch();
   const productTrending = useSelector((state) => state.productTrending);
   let { loading, error, products } = productTrending;
 
-  if (window.screen.width <= 700) {
-    products = products.slice(0, 6);
+  if(window.screen.width <= 700) {
+    products = products.slice(0, 6)
   }
 
   useEffect(() => {

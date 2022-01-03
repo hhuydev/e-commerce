@@ -367,8 +367,12 @@ const updatedProduct = asyncHandler(async (req, res) => {
     product.brand = brand;
     product.category = category;
     product.countInStock = countInStock;
-
-    const updatedProduct = await product.save();
+    let updatedProduct;
+    try {
+      updatedProduct = await product.save();
+    } catch (error) {
+      throw new Error("Can not update product");
+    }
     res.json(updatedProduct);
   } else {
     res.status(404);

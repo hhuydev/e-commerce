@@ -1,4 +1,3 @@
-import React from "react";
 import {
   ORDER_CREATE_FAIL,
   ORDER_CREATE_REQUEST,
@@ -20,7 +19,10 @@ import {
   ORDER_UPDATE_DELIVER_FAIL,
 } from "../constants/orderConstant";
 import axios from "axios";
-export const orderActions = async (order) => async (dispatch, getState) => {
+
+const URL_API = "http://localhost:5000";
+
+export const createOrder = (order) => async (dispatch, getState) => {
   try {
     dispatch({
       type: ORDER_CREATE_REQUEST,
@@ -37,7 +39,7 @@ export const orderActions = async (order) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post("/api/order", order, config);
+    const { data } = await axios.post(`${URL_API}/api/orders`, order, config);
 
     dispatch({
       type: ORDER_CREATE_SUCCESS,
@@ -71,7 +73,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/order/${id}`, config);
+    const { data } = await axios.get(`${URL_API}/api/orders/${id}`, config);
 
     dispatch({
       type: ORDER_DETAILS_SUCCESS,
@@ -107,7 +109,7 @@ export const payOrder =
       };
 
       const { data } = await axios.put(
-        `/api/order/${orderId}/pay`,
+        `${URL_API}/api/orders/${orderId}/pay`,
         paymentResult,
         config
       );
@@ -143,7 +145,7 @@ export const listMyOrders = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`/api/order/myorder`, config);
+    const { data } = await axios.get(`${URL_API}/api/orders/myorder`, config);
     dispatch({
       type: ORDER_MY_LIST_SUCCESS,
       payload: data,
@@ -176,7 +178,7 @@ export const listOrders = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get("/api/order", config);
+    const { data } = await axios.get(`${URL_API}/api/orders`, config);
 
     dispatch({
       type: ORDER_LISTS_SUCCESS,
@@ -210,7 +212,7 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.put(
-      `/api/order/${order._id}/deliver`,
+      `${URL_API}/api/orders/${order._id}/deliver`,
       {},
       config
     );

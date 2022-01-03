@@ -1,4 +1,5 @@
 import Container from "../../components/Container";
+import classes from "./BestSeller.module.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import SmallCard from "../../components/SmallCard/SmallCard";
@@ -7,8 +8,6 @@ import Loader from "../../components/Loader";
 import Message from "../../components/Message";
 import { useEffect } from "react";
 import { topProduct } from "../../actions/productActions";
-import classes from "./BestSeller.module.css";
-
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },

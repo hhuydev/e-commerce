@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Container } from "react-bootstrap";
 import classes from "./LoginScreen.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../../actions/userActions";
+import { login } from "../../../actions/userAction";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../components/Loader";

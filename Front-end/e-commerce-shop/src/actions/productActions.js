@@ -26,14 +26,16 @@ import {
   PRODUCT_FOR_SELLER_REQUEST,
   PRODUCT_FOR_SELLER_SUCCESS,
   PRODUCT_FOR_SELLER_FAIL,
-} from "../constants/productConstant";
+} from "../constants/productConstants";
 import axios from "axios";
+
+const URL_API = "http://localhost:5000";
 
 export const trendingProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_TRENDING_REQUEST });
 
-    const { data } = await axios.get("/api/products/trending");
+    const { data } = await axios.get(`${URL_API}/api/products/trending`);
     dispatch({
       type: PRODUCT_TRENDING_SUCCESS,
       payload: data,
@@ -53,7 +55,7 @@ export const topProduct = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_TOP_REQUEST });
 
-    const { data } = await axios.get("/api/products/top");
+    const { data } = await axios.get(`${URL_API}/api/products/top`);
     dispatch({
       type: PRODUCT_TOP_SUCCESS,
       payload: data,
@@ -73,7 +75,7 @@ export const getProductDetail = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAIL_REQUEST });
 
-    const { data } = await axios.get(`/api/products/${id}`);
+    const { data } = await axios.get(`${URL_API}/api/products/${id}`);
     dispatch({
       type: PRODUCT_DETAIL_SUCCESS,
       payload: data,
@@ -114,7 +116,7 @@ export const getProducts =
       };
 
       const { data } = await axios.get(
-        `/api/products/?search=${search}&categoryFilter=${categoryFilter}&colorFilter=${colorFilter}&priceFilter=${priceFilter}&sortBy=${sortBy}&pageNum=${pageNum}`,
+        `${URL_API}/api/products/?search=${search}&categoryFilter=${categoryFilter}&colorFilter=${colorFilter}&priceFilter=${priceFilter}&sortBy=${sortBy}&pageNum=${pageNum}`,
         config
       );
       dispatch({
@@ -149,7 +151,7 @@ export const getProductsForSeller = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get("/api/products/seller", config);
+    const { data } = await axios.get(`${URL_API}/api/products/seller`, config);
 
     dispatch({
       type: PRODUCT_FOR_SELLER_SUCCESS,
@@ -184,7 +186,11 @@ export const createProductReview =
         },
       };
 
-      await axios.post(`/api/products/${productId}/reviews`, review, config);
+      await axios.post(
+        `${URL_API}/api/products/${productId}/reviews`,
+        review,
+        config
+      );
 
       dispatch({
         type: PRODUCT_CREATE_REVIEW_SUCCESS,
@@ -217,7 +223,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`/api/products/${id}`, config);
+    await axios.delete(`${URL_API}/api/products/${id}`, config);
 
     dispatch({
       type: PRODUCT_DELETE_SUCCESS,
@@ -251,7 +257,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `/api/products/${product._id}`,
+      `${URL_API}/api/products/${product._id}`,
       product,
       config
     );
@@ -288,7 +294,11 @@ export const createProduct = (product) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post(`/api/products`, product, config);
+    const { data } = await axios.post(
+      `${URL_API}/api/products`,
+      product,
+      config
+    );
     console.log(data);
 
     dispatch({

@@ -11,7 +11,7 @@ import {
   productUpdateReducer,
   productCreateReducer,
   productForSellerReducer,
-} from "./reducers/productReducer";
+} from "./reducers/productReducers";
 import {
   userLoginReducer,
   userRegisterReducer,

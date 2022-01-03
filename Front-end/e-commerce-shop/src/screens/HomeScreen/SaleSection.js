@@ -1,5 +1,5 @@
-import Container from "../../components/Container";
 import classes from "./SaleSection.module.css";
+import Container from "../../components/Container";
 const SaleSection = () => {
   return (
     <div className={classes.container}>

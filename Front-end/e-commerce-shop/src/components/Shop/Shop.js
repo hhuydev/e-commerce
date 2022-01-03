@@ -1,5 +1,5 @@
 import React from "react";
-import Subscribe from "../../HomeScreen/Subscribe";
+import Subscribe from "../../screens/HomeScreen/Subscribe";
 import Hit from "../Hit/Hit";
 import {
   ShopContent,
@@ -22,7 +22,7 @@ import {
   MobileFilterButton,
   MobileFilterOverlay,
   CloseOverlay,
-} from "./Shop.element";
+} from "./Shop.elements.js";
 import Stack from "@mui/material/Stack";
 import { useSelector } from "react-redux";
 import Loader from "../../components/Loader";
@@ -40,8 +40,8 @@ import {
 import CustomRangeSlider from "./RangeSlider";
 
 const searchClient = algoliasearch(
-  "OY4QC3JMH5",
-  "082bca6e783a364937f09842edb84be6"
+  "1DJGILANZV",
+  "77b1863a8ff2cc9f55a1130f37842ae4"
 );
 
 const Shop = () => {

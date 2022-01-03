@@ -1,4 +1,5 @@
 import Container from "../../components/Container";
+import classes from "./MainSection.module.css";
 import trolly from "./images/xhero-banner.png.pagespeed.ic.Da3KtaVoQv.webp";
 import showcase1 from "./images/xhero-slide1.png.pagespeed.ic.KZViXlyXiG.webp";
 import showcase2 from "./images/xhero-slide2.png.pagespeed.ic.je2nitqAw1.webp";
@@ -6,7 +7,6 @@ import showcase3 from "./images/xhero-slide3.png.pagespeed.ic.jjMnTdDbyV.webp";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Card from "../../components/Card";
-import classes from "./MainSection.module.css";
 
 const showcases = [
   {

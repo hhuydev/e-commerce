@@ -104,35 +104,38 @@ const updateUserprofile = asyncHandler(async (req, res) => {
     if (req.body.password) {
       user.password = req.body.password;
     }
-    const { address, city, postalCode, state, phone, fullname } = req.body;
-    if (address) {
-      user.shippingAddress.address = address;
-    }
-    if (city) {
-      user.shippingAddress.city = city;
-    }
-    if (postalCode) {
-      user.shippingAddress.postalCode = postalCode;
-    }
-    if (state) {
-      user.shippingAddress.state = state;
-    }
-    if (phone) {
-      user.shippingAddress.phone = phone;
-    }
-    if (fullname) {
-      user.shippingAddress.fullname = fullname;
-    }
+    // const { address, city, postalCode, state, phone, fullname } = req.body;
+    // if (address) {
+    //   user.shippingAddress.address = address;
+    // }
+    // if (city) {
+    //   user.shippingAddress.city = city;
+    // }
+    // if (postalCode) {
+    //   user.shippingAddress.postalCode = postalCode;
+    // }
+    // if (state) {
+    //   user.shippingAddress.state = state;
+    // }
+    // if (phone) {
+    //   user.shippingAddress.phone = phone;
+    // }
+    // if (fullname) {
+    //   user.shippingAddress.fullname = fullname;
+    // }
     const updatedUser = await user.save();
 
+    // res.status(200).json({
+    //   _id: updatedUser._id,
+    //   name: updatedUser.name,
+    //   email: updatedUser.email,
+    //   isAdmin: updatedUser.isAdmin,
+    //   isSeller: updatedUser.isSeller,
+    //   shippingAddress: updatedUser.shippingAddress,
+    //   token: generateToken(updatedUser._id),
+    // });
     res.status(200).json({
-      _id: updatedUser._id,
-      name: updatedUser.name,
-      email: updatedUser.email,
-      isAdmin: updatedUser.isAdmin,
-      isSeller: updatedUser.isSeller,
-      shippingAddress: updatedUser.shippingAddress,
-      token: generateToken(updatedUser._id),
+      user: updatedUser,
     });
   } else {
     res.status(401);

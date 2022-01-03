@@ -30,7 +30,7 @@ import {
   PRODUCT_FOR_SELLER_FAIL,
   PRODUCT_FOR_SELLER_REQUEST,
   PRODUCT_FOR_SELLER_SUCCESS,
-} from "../constants/productConstant";
+} from "../constants/productConstants";
 
 export const productTrendingReducer = (state = { products: [] }, action) => {
   switch (action.type) {

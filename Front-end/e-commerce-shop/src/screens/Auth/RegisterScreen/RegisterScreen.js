@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap";
 import classes from "../LoginScreen/LoginScreen.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { register } from "../../../actions/userActions";
+import { register } from "../../../actions/userAction";
 import { Link } from "react-router-dom";
 import Message from "../../../components/Message";
 import Loader from "../../../components/Loader";
